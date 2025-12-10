@@ -1,9 +1,9 @@
 name: json_isolate_parser
 description: Parse JSON in isolates with generics and seamless Dio integration.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/StefanKostovski991
 repository: https://github.com/StefanKostovski991/json_isolate_parser
-publish_to: https://github.com/StefanKostovski991/json_isolate_parser
+
 
 environment:
   sdk: '>=3.1.0 <4.0.0'

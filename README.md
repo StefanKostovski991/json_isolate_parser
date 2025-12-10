@@ -1,39 +1,40 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# json_isolate_parser
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+A Dart package that performs **JSON parsing in a separate thread using isolates**, ensuring smooth performance and preventing UI jank.  
+Built on top of the [`dio`](https://pub.dev/packages/dio) HTTP client for efficient networking.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+---
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## ✨ Features
+- 🚀 Parse large JSON responses without blocking the main thread.
+- 🔄 Uses Dart isolates for concurrency and performance.
+- 🌐 Integrated with Dio for seamless HTTP requests + parsing.
+- 🛡️ Safe and efficient parsing for Flutter and Dart applications.
 
-## Features
+---
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## 📦 Installation
+Add the dependency in your `pubspec.yaml`:
 
-## Getting started
+## 🛠️ Usage
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+import 'package:dio/dio.dart';
+import 'package:json_isolate_parser/json_isolate_parser.dart';
 
-## Usage
+void main() async {
+  final dio = Dio();
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+  // Fetch JSON data
+  final response = await dio.get('https://jsonplaceholder.typicode.com/posts');
 
-```dart
-const like = 'sample';
-```
+  // Parse JSON in a separate isolate
+  final parsedData = await JsonIsolateParser.parse(response.data);
 
-## Additional information
+  print(parsedData); // Parsed list of posts
+}
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+
+```yaml
+dependencies:
+  json_isolate_parser: ^0.0.2
+
